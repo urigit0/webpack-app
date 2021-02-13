@@ -13,6 +13,21 @@ module.exports = {
       filename: '[name].js'
    },
    plugins: [
-      new HtmlWebpackPlugin()
-   ]
+      new HtmlWebpackPlugin({
+         template: PATHS.source + '/index.pug',
+      }
+      )
+   ],
+   module: {
+      rules: [
+         {
+            test: /\.pug$/,
+            loader: 'pug-loader',
+            options: {
+               pretty: true
+            }
+         }
+      ]
+   }
+
 };
