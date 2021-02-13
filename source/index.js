@@ -1,1 +1,0 @@
-console.log("it's index.js");
