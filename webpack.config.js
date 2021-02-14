@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
+const CopyPlugin = require("copy-webpack-plugin");
 
 const PATHS = {
    source: path.join(__dirname, 'source'),
@@ -12,7 +12,6 @@ const PATHS = {
 const common = {
    entry: {
       'index': PATHS.source + '/pages/index/index.js',
-      'blog': PATHS.source + '/pages/blog/blog.js',
    },
    output: {
       path: PATHS.build,
@@ -25,14 +24,20 @@ const common = {
          filename: 'index.html',
          chunks: ['index']
       }),
-      new HtmlWebpackPlugin({
-         template: PATHS.source + '/pages/blog/blog.pug',
-         filename: 'blog.html',
-         chunks: ['blog']
-      })
+
+      new CopyPlugin({
+         patterns: [
+            { from: PATHS.source + '/pages/img_stat', to: PATHS.build },
+            //   { from: "other", to: "public" },
+         ],
+      }),
    ],
    module: {
       rules: [
+         {
+            test: /\.(woff|woff2|eot|ttf|otf)$/i,
+            type: 'asset/resource',
+         },
          {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
             type: 'asset/resource',
