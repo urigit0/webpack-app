@@ -1,19 +1,35 @@
 {
    "name": "webpack-app",
    "version": "1.0.0",
-   "description": "",
    "main": "index.js",
    "scripts": {
-      "start": "webpack"
+      "start": "webpack serve --open --env development",
+      "build": "webpack --env production",
+      "dev": "webpack --env development"
    },
    "keywords": [],
    "author": "",
    "license": "ISC",
    "devDependencies": {
+      "clean-webpack-plugin": "^3.0.0",
+      "css-loader": "^5.0.2",
       "html-webpack-plugin": "^5.1.0",
+      "node-sass": "^5.0.0",
       "pug": "^3.0.0",
       "pug-loader": "^2.4.0",
+      "sass-loader": "^11.0.1",
+      "style-loader": "^2.0.0",
       "webpack": "^5.21.2",
-      "webpack-cli": "^4.5.0"
-   }
+      "webpack-cli": "^4.5.0",
+      "webpack-dev-server": "^3.11.2"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/urigit0/webpack-app.git"
+   },
+   "bugs": {
+      "url": "https://github.com/urigit0/webpack-app/issues"
+   },
+   "homepage": "https://github.com/urigit0/webpack-app#readme",
+   "description": ""
 }
